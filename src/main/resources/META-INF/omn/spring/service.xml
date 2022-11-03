@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="imageRecognitionController" class="com.example.imrecognition.ImageRecognitionController">
+        <constructor-arg>
+            <map>
+                <entry key="CLARIFAI"  value-ref="clarifaiCommunicator"></entry>
+                <entry key="IMAGGA"  value-ref="imaggaCommunicacor"></entry>
+                <entry key="MSVISION"  value-ref="msVisionCommunicator"></entry>
+                <entry key="IBMVISION"  value-ref="ibmVisionCommunicator"></entry>
+                <entry key="GOOGLEVISION"  value-ref="googleCommunicator"></entry>
+                <entry key="EYEEM"  value-ref="eyeEMCommunicator"></entry>
+                <entry key="CLOUDSIGHT"  value-ref="cloudSightCommunicator"></entry>
+                <entry key="AWS"  value-ref="awsCommunicator"></entry>
+                <entry key="DOTSIMAGE"  value-ref="dotsImageCommunicator"></entry>
+                <entry key="TENSOR"  value-ref="tensorCommunicator"></entry>
+            </map>
+        </constructor-arg>
+    </bean>
+
+    <bean id="textRecognitionController" class="com.example.imrecognition.TextRecognitionController">
+        <constructor-arg>
+            <map>
+                <entry key="TEXTENGINE"  value-ref="textEngineCommunicator"></entry>
+                <entry key="TEXTOMATIC"  value-ref="textomaticCommunicator"></entry>
+            </map>
+        </constructor-arg>
+        <constructor-arg>
+            <map>
+                <entry key="MSTAGS"  value-ref="msTagsCommunicator"></entry>
+                <entry key="IBMTAGS"  value-ref="ibmTagsCommunicator"></entry>
+                <entry key="DOTS"  value-ref="dotsCommunicator"></entry>
+                <entry key="GOOGLETAGS"  value-ref="googleTagsCommunicator"></entry>
+                <entry key="AWSTAGS"  value-ref="awsTagsCommunicator"></entry>
+                <entry key="AYLIEN"  value-ref="aylienCommunicator"></entry>
+            </map>
+        </constructor-arg>
+    </bean>
+
+
+
+    <bean id="textEngineCommunicator" class="com.example.imrecognition.communicators.TextEngineCommunicator"/>
+    <bean id="textomaticCommunicator" class="com.example.imrecognition.communicators.TextomaticCommunicator"/>
+
+    <bean id="msTagsCommunicator" class="com.example.imrecognition.communicators.MSTagsCommunicator"/>
+    <bean id="ibmTagsCommunicator" class="com.example.imrecognition.communicators.IBMTagsCommunicator"/>
+    <bean id="dotsCommunicator" class="com.example.imrecognition.communicators.DotsCommunicatorImpl"/>
+    <bean id="googleTagsCommunicator" class="com.example.imrecognition.communicators.GoogleTagsCommunicatorImpl"/>
+    <bean id="awsTagsCommunicator" class="com.example.imrecognition.communicators.AWSTagsCommunicatorImpl"/>
+    <bean id="aylienCommunicator" class="com.example.imrecognition.communicators.AylienCommunicator"/>
+
+
+    <bean id="clarifaiCommunicator" class="com.example.imrecognition.communicators.ClarifaiCommunicator"/>
+    <bean id="msCommunicator" class="com.example.imrecognition.communicators.MsVisionCommunicator"/>
+    <bean id="clarifaiDataTransformer" class="com.example.imrecognition.transformers.ClarifaiRawDataTransformer"/>
+
+    <bean id="imaggaRawDataTransformer" class="com.example.imrecognition.transformers.ImaggaRawDataTransformer"/>
+    <bean id="imaggaCommunicacor" class="com.example.imrecognition.communicators.ImaggaCommunicator"/>
+
+    <bean id="awsRawDataTransformer" class="com.example.imrecognition.transformers.AWSRawDataTransformer"/>
+    <bean id="awsCommunicator" class="com.example.imrecognition.communicators.AWSCommunicator"/>
+
+    <bean id="msVisionCommunicator" class="com.example.imrecognition.communicators.MsVisionCommunicator"/>
+    <bean id="msVisionRawDataTransformer" class="com.example.imrecognition.transformers.MsVisionRawDataTransformer"/>
+
+    <bean id="ibmVisionCommunicator" class="com.example.imrecognition.communicators.IBMVisionCommunicator"/>
+    <bean id="ibmVisionRawDataTransformer" class="com.example.imrecognition.transformers.IBMVisionRawDataTransformer"/>
+    <bean id="dotsImageCommunicator" class="com.example.imrecognition.communicators.DotsImageCommunicator"/>
+    <bean id="dotsImageRawDataTransformed" class="com.example.imrecognition.transformers.DotsImageRawDataTransformed"/>
+
+    <bean id="googleCommunicator" class="com.example.imrecognition.communicators.GoogleCommunicator"/>
+    <bean id="googleVisionRawDataTransformer" class="com.example.imrecognition.transformers.GoogleVisionRawDataTransformer"/>
+
+    <bean id="eyeEMCommunicator" class="com.example.imrecognition.communicators.EyeEMCommunicator"/>
+    <bean id="eyeEMRawDataTransformer" class="com.example.imrecognition.transformers.EyeEMRawDataTransformer"/>
+
+    <bean id="cloudSightCommunicator" class="com.example.imrecognition.communicators.CloudSightCommunicator"/>
+    <bean id="cloudSightRawDataTransformed" class="com.example.imrecognition.transformers.CloudSightRawDataTransformed"/>
+
+    <bean id="tensorCommunicator" class="com.example.imrecognition.communicators.TensorCommunicator"/>
+    <bean id="tensorRawDataTransformer" class="com.example.imrecognition.transformers.TensorRawDataTransformer"/>
+
+    <bean id="faceToApertureAWS" class="com.example.imrecognition.aperture.FaceToApertureAWS"/>
+    <bean id="xmpApertureValueFacade" class="com.example.imrecognition.aperture.XMPApertureValueFacade" />
+    <bean id="javaFunctionFaceToApertureAWS" class="com.example.imrecognition.aperture.JavaFunctionFaceToApertureAWS"/>
+
+    <bean id="classificationHelper" class="com.example.imrecognition.helper.ClassificationHelper"/>
+    <bean id="omnTranslationService" class="com.example.imrecognition.OmnTranslationService"/>
+
+</beans>
